@@ -12,7 +12,10 @@
         pkgs = import nixpkgs { inherit system; };
         package = pkgs.callPackage ./default.nix {};
       in {
-        packages.default = package;
+        packages = {
+          default = package;
+          github-settings-sync = package;
+        };
 
         apps.default = flake-utils.lib.mkApp {
           drv = package;
